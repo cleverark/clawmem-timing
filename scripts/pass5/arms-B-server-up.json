@@ -1,0 +1,60 @@
+[
+ {
+  "name": "v037-rr",
+  "bin": "~/clawmem-timing/ClawMem-v037-legs/bin/clawmem",
+  "watch": false,
+  "env": {
+   "CLAWMEM_PROFILE": "deep",
+   "CLAWMEM_ENABLE_AMEM": "false",
+   "CLAWMEM_EMBED_URL": "http://localhost:11434",
+   "CLAWMEM_EMBED_MODEL": "nomic-embed-text",
+   "CLAWMEM_LLM_URL": "http://127.0.0.1:8089",
+   "NODE_LLAMA_CPP_GPU": "cuda",
+   "CLAWMEM_RERANK_URL": "http://127.0.0.1:8090"
+  }
+ },
+ {
+  "name": "v042-rr",
+  "bin": "~/clawmem-timing/ClawMem/bin/clawmem",
+  "watch": true,
+  "env": {
+   "CLAWMEM_PROFILE": "deep",
+   "CLAWMEM_ENABLE_AMEM": "false",
+   "CLAWMEM_EMBED_URL": "http://localhost:11434",
+   "CLAWMEM_EMBED_MODEL": "nomic-embed-text",
+   "CLAWMEM_LLM_URL": "http://127.0.0.1:8089",
+   "NODE_LLAMA_CPP_GPU": "cuda",
+   "CLAWMEM_RERANK_URL": "http://127.0.0.1:8090"
+  }
+ },
+ {
+  "name": "v042x-or",
+  "bin": "~/clawmem-timing/ClawMem-v042-ftsexp/bin/clawmem",
+  "watch": true,
+  "env": {
+   "CLAWMEM_PROFILE": "deep",
+   "CLAWMEM_ENABLE_AMEM": "false",
+   "CLAWMEM_EMBED_URL": "http://localhost:11434",
+   "CLAWMEM_EMBED_MODEL": "nomic-embed-text",
+   "CLAWMEM_LLM_URL": "http://127.0.0.1:8089",
+   "NODE_LLAMA_CPP_GPU": "cuda",
+   "CLAWMEM_RERANK_URL": "http://127.0.0.1:8090",
+   "CLAWMEM_EXP_FTS": "or"
+  }
+ },
+ {
+  "name": "v042x-andnostop",
+  "bin": "~/clawmem-timing/ClawMem-v042-ftsexp/bin/clawmem",
+  "watch": true,
+  "env": {
+   "CLAWMEM_PROFILE": "deep",
+   "CLAWMEM_ENABLE_AMEM": "false",
+   "CLAWMEM_EMBED_URL": "http://localhost:11434",
+   "CLAWMEM_EMBED_MODEL": "nomic-embed-text",
+   "CLAWMEM_LLM_URL": "http://127.0.0.1:8089",
+   "NODE_LLAMA_CPP_GPU": "cuda",
+   "CLAWMEM_RERANK_URL": "http://127.0.0.1:8090",
+   "CLAWMEM_EXP_FTS": "and-nostop"
+  }
+ }
+]

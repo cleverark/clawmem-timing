@@ -1,0 +1,45 @@
+--- a/src/hooks/context-surfacing.ts	2026-08-30 15:27:02.000000000 -0500
++++ b/src/hooks/context-surfacing.ts	2026-10-04 23:44:23.185848593 -0500
+@@ -302,7 +302,9 @@
+     if (elapsed < profile.escalationBudgetMs) {
+       try {
+         // Phase 1: Query expansion — discover candidates BM25+vector missed
++        const __te0 = Date.now();
+         const expanded = await store.expandQuery(retrievalQuery, DEFAULT_QUERY_MODEL, sessionTopic);
++        console.error(`[legs] expand_ms=${Date.now()-__te0} at_ms=${Date.now()-startTime} variants=${expanded.length}`);
+         if (expanded.length > 0) {
+           const seen = new Set(results.map(r => r.filepath));
+           for (const eq of expanded.slice(0, 3)) {
+@@ -346,7 +348,9 @@
+             file: r.filepath,
+             text: (r.body || "").slice(0, 2000),
+           }));
++          const __tr0 = Date.now();
+           const reranked = await store.rerank(prompt, toRerank, DEFAULT_RERANK_MODEL, sessionTopic);
++          console.error(`[legs] rerank_ms=${Date.now()-__tr0} at_ms=${Date.now()-startTime} docs=${toRerank.length} scored=${reranked.length}`);
+           if (reranked.length > 0) {
+             const rerankedMap = new Map(reranked.map(r => [r.file, r.score]));
+             // Blend: 60% original score + 40% reranker score for stability
+--- a/src/llm.ts	2026-08-30 15:27:02.000000000 -0500
++++ b/src/llm.ts	2026-10-04 23:44:29.074891408 -0500
+@@ -1551,7 +1551,9 @@
+ 
+     // Remote LLM path — no grammar constraint, parse output instead
+     if (this.remoteLlmUrl && !this.isRemoteLlmDown()) {
++      const __tq0 = Date.now();
+       const result = await this.expandQueryRemote(query, includeLexical, context, intent);
++      console.error(`[legs] expand_remote_ms=${Date.now()-__tq0} remote_down_after=${this.isRemoteLlmDown()}`);
+       // Check if transport failure set cooldown during this call
+       if (!this.isRemoteLlmDown()) return result;
+       // Transport failure — fall through to local grammar path
+@@ -1571,8 +1573,10 @@
+       );
+     }
+ 
++    const __tl0 = Date.now();
+     const llama = await this.ensureLlama();
+     await this.ensureGenerateModel();
++    console.error(`[legs] expand_local_model_load_ms=${Date.now()-__tl0}`);
+ 
+     const grammar = await llama.createGrammar({
+       grammar: `

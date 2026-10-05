@@ -1,0 +1,16 @@
+== Part 1: keyword search (no models used)
+full question:          0 hit(s) on postcards.md
+'postcards collection': 1 hit(s) on postcards.md
+== Part 2: context-surfacing hook, CLAWMEM_SURFACING_TRACE=1, watcher running
+-- [balanced] How many new postcards have I added to my collection since I started collecting again?
+  injected postcards.md: False
+  outcome: empty / admission-degenerate | abstainReason: degenerate-basis | keywordAgreed: 0 | lanes: ['vector']
+-- [deep] How many new postcards have I added to my collection since I started collecting again?
+  injected postcards.md: False
+  outcome: empty / admission-degenerate | abstainReason: degenerate-basis | keywordAgreed: 0 | lanes: ['expansion-vec', 'vector']
+-- [balanced] my postcards collection since I started again
+  injected postcards.md: True
+  outcome: injected / None | abstainReason: None | keywordAgreed: 1 | lanes: ['fts-supplement', 'vector']
+-- [deep] my postcards collection since I started again
+  injected postcards.md: True
+  outcome: injected / None | abstainReason: None | keywordAgreed: 1 | lanes: ['expansion-vec', 'fts-supplement', 'vector']

@@ -1,0 +1,22 @@
+p5-C-own/v037-inproc/01493427-r1/hook.stderr
+[legs] expand_remote_ms=2174 remote_down_after=false
+[legs] expand_ms=2188 at_ms=2254 variants=5
+[legs] rerank_ms=6798 at_ms=9106 docs=15 scored=15
+============================================================
+Bun v1.2.23 (cf136713) Linux arm64
+Linux Kernel v6.17.0 | glibc v2.39
+CPU: neon fp aes crc32 atomics sve
+Args: "~/.bun/bin/bun" "~/clawmem-timing/ClawMem-v037-legs/bin/../src/clawmem.ts" "hook" "context-surfacing"
+Features: Bun.stderr(2) Bun.stdin(2) Bun.stdout(2) abort_signal(2) fetch(4) jsc transpiler_cache(16) tsconfig(4) process_dlopen 
+Builtins: "bun:main" "bun:sqlite" "node:assert" "node:buffer" "node:child_process" "node:console" "node:constants" "node:crypto" "node:events" "node:fs" "node:fs/promises" "node:module" "node:os" "node:path" "node:process" "node:stream" "node:string_decoder" "node:tty" "node:url" "node:util" 
+Elapsed: 10402ms | User: 3717ms | Sys: 4697ms
+RSS: 1.09GB | Peak: 2.51GB | Commit: 1.09GB | Faults: 0 | Machine: 0.13TB
+
+panic(main thread): Segmentation fault at address 0x2F06F7F3C420F8
+oh no: Bun has crashed. This indicates a bug in Bun, not your code.
+
+To send a redacted crash report to Bun's team,
+please file a GitHub issue using the link below:
+
+ https://bun.report/1.2.23/La1cf136714gBuhkQmkkkpE+lF+8/K+8/KmxgLu61O23kzgEuujl6C+4t75C26zy9DA2uvj8FxwvvnM
+
